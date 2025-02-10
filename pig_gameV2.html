@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康猪养成计划</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #pig { font-size: 100px; display: block; margin: 20px auto; }
+        .button { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer; }
+        #status { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>健康猪养成计划</h1>
+    <div id="pig">🐷</div>
+    <p>当前睡觉时间 <span id="sleepTime">200</span></p>
+    <p>血条 <span id="health">100</span></p>
+    <p>丧值 <span id="depression">50</span></p>
+    <button class="button" onclick="exercise()">运动</button>
+    <button class="button" onclick="feed()">喂食</button>
+    <button class="button" onclick="relax()">放松</button>
+    <button class="button" onclick="forcedWakeUp()">强制早起</button>
+    <button class="button" onclick="goHomeAlone()">独自回家</button>
+    <button class="button" onclick="dumbDB()">傻逼DB</button>
+    <button class="button" onclick="stomachAttack()">肠炎袭击</button>
+
+    <script>
+        let sleepHour = 2;
+        let health = 100;
+        let depression = 50;
+
+        function updateStatus() {
+            document.getElementById('sleepTime').textContent = sleepHour + '00';
+            document.getElementById('health').textContent = health;
+            document.getElementById('depression').textContent = depression;
+        }
+
+        function exercise() {
+            if (sleepHour < 22) {
+                sleepHour -= 1;
+                health += 5;
+                alert('猪猪运动后更累了，睡得更早了！血条+5');
+            } else {
+                alert('猪猪已经睡得很早了，不需要再运动了！');
+            }
+            updateStatus();
+        }
+
+        function feed() {
+            if (sleepHour < 20) {
+                sleepHour -= 1;
+                health += 10;
+                alert('吃饱饱，猪猪更有能量调整作息！血条+10');
+            } else {
+                alert('猪猪已经养成好习惯了，继续保持！');
+            }
+            updateStatus();
+        }
+
+        function relax() {
+            if (sleepHour < 18) {
+                sleepHour -= 1;
+                health += 8;
+                depression -= 5;
+                alert('猪猪放松后更容易早睡了！血条+8，丧值-5');
+            } else {
+                alert('猪猪已经是健康的猪猪啦！');
+            }
+            updateStatus();
+        }
+
+        function forcedWakeUp() {
+            sleepHour -= 2;
+            depression -= 10;
+            alert('强制早起让猪猪更自律了！丧值-10');
+            updateStatus();
+        }
+
+        function goHomeAlone() {
+            depression -= 15;
+            alert('独自回家让猪猪学会独立！丧值-15');
+            updateStatus();
+        }
+
+        function dumbDB() {
+            depression -= 20;
+            alert('傻逼DB的出现让猪猪顿悟！丧值-20');
+            updateStatus();
+        }
+
+        function stomachAttack() {
+            depression -= 25;
+            alert('肠炎袭击！让猪猪痛定思痛，丧值-25');
+            updateStatus();
+        }
+    </script>
+</body>
+</html>
